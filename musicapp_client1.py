@@ -49,22 +49,13 @@ def browseFiles():
         
         ftp_server.dir()
         ftp_server.quit()
+        istbox.insert(song_counter, fname) 
+        song_counter = song_counter + 1
         
     
     except FileNotFoundError:
         print('Cancel Button Pressed')
         
-
-
-
-
-
-
-
-for file in os.listdir('shared_files'):
-    filename = os.fsdecode(file)
-    listbox.insert(song_counter,filename)
-    song_counter = song_counter + 1
     
 def play():
     global song_selected
@@ -115,6 +106,10 @@ def musicWindow():
     
     listBox = Listbox(window, height = 10, width = 39, activestyle = 'dotbox',bg = 'LightSkyBlue', borderwidth = 2, font = ('Calibri',10))
     listBox.place(x=12,y=20)
+    for file in os.listdir('shared_files'):
+    filename = os.fsdecode(file)
+    listbox.insert(song_counter,filename)
+    song_counter = song_counter + 1
     
     scrollbar1 = Scrollbar(listBox)
     scrollbar1.place(relheight = 1, relx=1)
