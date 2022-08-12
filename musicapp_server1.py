@@ -4,12 +4,18 @@ from threading import Thread
 from pyftpdlib.authorizers import DummyAuthorizer
 from pyftpdlib.handlers import FTPHandler
 from pyftpdlib.servers import FTPServer
+import os
 
 IP_ADDRESS = '127.0.0.1'
 PORT = 8050
 SERVER = None 
 BUFFER_SIZE = 4096
 clients = {}
+
+is_dir_exists = os.path.isdir('shared_files') 
+print(is_dir_exists) 
+if(not is_dir_exists): 
+    os.makedirs('shared_files')
 
 
 def ftp():
