@@ -144,6 +144,7 @@ def musicWindow():
     
 
 def set_up():
+    global song_counter
     global SERVER
     global PORT
     global IP_ADDRESS
