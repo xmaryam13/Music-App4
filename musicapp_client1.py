@@ -1,4 +1,3 @@
-from importlib.metadata import files
 import socket
 from threading import Thread
 from tkinter import *
@@ -75,7 +74,7 @@ def stop():
     global song_selected
     pygame
     mixer.init()
-    mixer.music.load('shared_files/', song_selected)
+    mixer.music.load('shared_files/'+song_selected)
     mixer.music.pause()
     infoLabel.configure(text= "")
     
@@ -108,16 +107,16 @@ def musicWindow():
     selectLabel = Label(window, text = 'Select Song', bg = 'LightSkyBlue', font = ('Calibri',10))
     selectLabel.place(x=2,y=2)
     
-    listBox = Listbox(window, height = 10, width = 39, activestyle = 'dotbox',bg = 'LightSkyBlue', borderwidth = 2, font = ('Calibri',10))
-    listBox.place(x=12,y=20)
+    listbox = Listbox(window, height = 10, width = 39, activestyle = 'dotbox',bg = 'LightSkyBlue', borderwidth = 2, font = ('Calibri',10))
+    listbox.place(x=12,y=20)
     for file in os.listdir('shared_files'):
         filename = os.fsdecode(file)
         listbox.insert(song_counter,filename)
         song_counter = song_counter + 1
     
-    scrollbar1 = Scrollbar(listBox)
+    scrollbar1 = Scrollbar(listbox)
     scrollbar1.place(relheight = 1, relx=1)
-    scrollbar1.config(command = listBox.yview)
+    scrollbar1.config(command = listbox.yview)
     
     playButton = Button(window, text='Play',width = 10, bd = 1, bg = 'SkyBlue',font = ('Calibri',10),command = play)
     playButton.place(x=30,y=200)
